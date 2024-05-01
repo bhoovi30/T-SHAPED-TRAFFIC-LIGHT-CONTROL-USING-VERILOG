@@ -1,0 +1,30 @@
+module Traffic_Light_Controller_TB_v;
+	// Inputs
+	reg clk, rst;
+
+	// Outputs
+	wire [2:0] light_M1;
+	wire [2:0] light_S;
+	wire [2:0] light_MT;
+	wire [2:0] light_M2;
+	wire [3:0] count;
+	wire [2:0] ps;
+
+	Traffic_Light_Controller dut (
+		.clk(clk), 
+		.rst(rst), 
+		.light_M1(light_M1), 
+		.light_S(light_S), 
+		.light_MT(light_MT), 
+		.light_M2(light_M2),
+		.count(count),
+		.ps(ps)
+	);
+
+	initial begin
+		rst=0; clk=0;
+		#750;
+		rst=1;
+	end
+	always #5 clk=~clk;
+endmodule
